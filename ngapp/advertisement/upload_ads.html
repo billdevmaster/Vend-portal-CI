@@ -1,0 +1,59 @@
+<div class="container wrapper">
+  <form name="form" role="form">
+    <div class="row">
+      <div class="col-lg-3 col-md-2 col-sm-1"></div>
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <br /><br /><br />
+        <h3 class="form-group col-lg-12">Upload Advertisement</h3><br />
+        <div class="form-group col-lg-12">
+          <label>Advertisement Name or ID</label>
+          <input type="text" ng-model="ads_name" class="form-control restrict-special-character" maxlength="35">
+        </div>
+        <div class="form-group col-lg-12">
+          <label>Upload Advertisement File</label>
+          <input type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept=".mp4" required="required"
+            aria-required="true" ngf-max-height="2000" ngf-max-size="21MB" file-model="advertisement_file" name="advertisement_file"
+            id="advertisement_file" class="form-control">
+        </div>
+        <div class="form-group col-lg-12" style="margin-top: 10px;">
+          <label
+            class="file required control-label">Recommended Format / Resolution - .mp4 file, Max File size 20 MB, landscape, Width * Height (1280*720)</label><br />
+        </div>
+        <div class="form-group col-lg-12">
+          <br />
+          <div class="alert alert-danger" ng-if="errorMsg">
+            {{errorMsg}}
+          </div>
+          <div class="alert alert-danger" ng-show="errFile.$error">File Size Limit Exceeded , Please upload a file less
+            than
+            20 MB.</div>
+          <span class="progress" ng-show="f.progress > 0">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:{{f.progress}}%"
+              ng-bind="f.progress + '%'">
+            </div>
+          </span>
+          <br />
+          <div>
+            <button type="submit" class="btn btn-primary" ng-click="uploadAd()">Upload Advertisement</button>
+          </div>
+          <br /><br />
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+</div>
+<script>
+  $('.restrict-special-character').keypress(function (e) {
+    var regex = new RegExp("^[a-zA-Z0-9-_. ]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+      return true;
+    }
+
+    e.preventDefault();
+    return false;
+  });
+</script>

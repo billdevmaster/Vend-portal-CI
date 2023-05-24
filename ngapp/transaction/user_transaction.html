@@ -1,0 +1,49 @@
+<div class="container">
+        <div class="col-md-8 col-md-offset-2 table_margin" >
+        <table class="table" id="tableToExport">
+            <tr>
+                <th>Date
+                </th>
+                <th>Time
+                </th>
+                <th>Location
+                </th>
+                <th>Debit
+                </th>
+                <th>Credit
+                </th>
+                <th>Balance Available
+                </th>
+            </tr>
+            <tr ng-repeat="transaction in datas">
+                <td>{{transaction.date}}
+                </td>
+                <td>{{transaction.time}}
+                </td>
+                <td>{{transaction.store}}
+                </td>
+                <td>{{transaction.amount_debit}}
+                </td>
+                <td>{{transaction.amount_credit}}
+                </td>
+                <td>{{transaction.amount}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-8 col-md-offset-2" >
+        <div class="login" excel-export export-data="exportData" file-name="{{fileName}}">Download Excel</button>
+    </div>
+    </div>
+    <style>
+    .login{
+    color: #fff;
+    cursor: pointer;
+    background: #3598dc;
+    font-size: 14px;
+    transition: background 0.4s ease;
+    padding: 10px;
+    }
+    
+    .login:hover{ background: #0470af; }
+    </style>

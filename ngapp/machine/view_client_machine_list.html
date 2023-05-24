@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row" style="text-align: center;">
+        <br /><br /><br />
+        <h3 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 text-left">View Machine</h3>
+        <br /><br />
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2"
+            align="center">
+            <p><strong style="color: black;font-size:16px;">Search</strong><input type="text"
+                    class="inputSearch form-control" ng-model="searchName" placeholder="Search" /></p>
+        </div>
+        <br /><br /><br />
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4  col-sm-push-1 col-xs-push-1 img-thumbnail" align="center"
+            style="margin: 10px;text-align: center;"
+            dir-paginate="machine in data | filter:searchName | itemsPerPage: 10">
+
+            <img src="http://tcn.vendportal.com/ngapp/assets/images/machine/vending_machine.png"
+                class="img-responsive" style="margin-bottom:5px;">
+            <br /><br />
+            <h4 style="clear:both;font-weight:bold;margin-bottom:5px;color: rgb(20, 1, 90);overflow: hidden;"
+                data-toggle="tooltip" data-placement="left" title="{{machine.machine_name}}">{{machine.machine_name}}
+            </h4>
+            <button ng-click="viewProductsList(machine)" style="color:blue;margin-top: 10px;">Planogram</button>
+            <br />
+            <button ng-click="uploadPlanogram(machine)" style="color:blue;margin-top: 10px;">Upload Planogram</button>
+            <br />
+            <button ng-click="resetPlanogram(machine)" style="color:blue;margin-top: 10px;">Reset Planogram</button>
+            <br />
+            <button ng-click="configure(machine)" style="color:blue;margin-top: 10px;">Configure</button>
+            <br />
+            <button ng-click="cloneMachine(machine)" style="color:blue;margin-top: 10px;">Clone Machine</button>
+        </div>
+    </div>
+    <dir-pagination-controls class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: -webkit-center"></dir-pagination-controls>
+</div>
+<style>
+    h4 {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        height: 25px;
+    }
+
+    .inputSearch {
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 80%;
+        height: 35px;
+        font-size: 18px;
+        padding-left: 10px;
+        color: black;
+        float: right;
+    }
+</style>

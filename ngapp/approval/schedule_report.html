@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="col-md-12 table_margin">
+      <div class="row">
+        <h3 class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-left">Schedule Report</h3>
+      </div>
+      <br /><br />
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2"
+        align="center" style="margin-bottom:20px;">
+        <p><strong style="color: black;font-size:16px;">Search</strong><input type="text" id="myInput"
+            onkeyup="myFunction()" class="inputSearch form-control" ng-model="searchName" placeholder="Search" /></p>
+      </div>
+      <br /><br />
+      <table class="table" id="tableToExport">
+        <tr>
+          <th>Client Name
+          </th>
+          <th>Client Code
+          </th>
+          <th>Report Type
+          </th>
+          <th>Requested On
+          </th>
+          <th>
+          </th>
+        </tr>
+        <tr ng-repeat="scheduleReport in scheduleReports">
+          <td>{{scheduleReport.client_name}}
+          </td>
+          <td>{{scheduleReport.client_code}}
+          </td>
+          <td>{{scheduleReport.report_type}}
+          </td>
+          <td>{{scheduleReport.requested_on}}
+          </td>
+          <td>
+            <button type="button" class="btn btn-success" ng-show="scheduleReport.is_approval == 0" ng-click="activateScheduleReport(scheduleReport)">Approve</button>
+            <button type="button" class="btn btn-danger" ng-show="scheduleReport.is_approval == 0" ng-click="deactivateScheduleReport(scheduleReport)">Reject</button>
+            <label style="color: green" ng-show="scheduleReport.is_approval == 1">Approved</label>
+            <label style="color: red" ng-show="scheduleReport.is_approval == 2">Rejected</label>
+          </td>
+          
+        </tr>
+      </table>
+    </div>
+  </div>
+  <style>
+    .login {
+      color: #fff;
+      cursor: pointer;
+      background: #3598dc;
+      font-size: 14px;
+      transition: background 0.4s ease;
+      padding: 10px;
+    }
+  
+    a:hover {
+      color: #001238;
+    }
+  
+    .inputSearch {
+      background-color: white;
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      width: 80%;
+      height: 35px;
+      font-size: 18px;
+      padding-left: 10px;
+      color: black;
+      float: right;
+    }
+  
+    .login:hover {
+      background: #0470af;
+    }
+  </style>
+  <script>
+    function myFunction() {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tableToExport");
+      tr = table.getElementsByTagName("tr");
+  
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        //console.log(td);
+        if (td) {
+          if (tr[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>

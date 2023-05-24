@@ -1,0 +1,92 @@
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" >
+    <div class="container">
+        <div class="navbar-header" >
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+            <a class="navbar-brand" href="#/dashboard">Dashboard</a>
+            <!--<a class="navbar-brand" href="#/home2"><img src="ngapp/assets/img/logo.png" alt="CC2GO Loyalty"
+                style="width:200px;height:70px;"></a> -->
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <!--   <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <li><a class="togglenavBar" href="#/full_advertisement_report">Advertisement Report</a>
+                        </li>
+                        <li><a class="togglenavBar refeshAdvertisementReport" href="#/advertisement_report">Machine Specific Advertisement Report</a>
+                        </li> 
+                    </ul>
+                </li> -->
+                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Machine<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <!--<li><a class="togglenavBar" href="#/add_machine">Add Machine</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/view_machine">View Machine</a>
+                        </li>-->
+                        <!--<li><a class="togglenavBar refeshFillMachine" href="#/fill_machine">Fill Machine</a>
+                        </li>-->
+                        <li><a class="togglenavBar refeshEditMachine" href="#/machine">Machine</a>
+                        </li>
+                    </ul>
+                </li>
+                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Machine Logins<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <li><a class="togglenavBar" href="#/add_user">Request Login</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/view_user">Machine Logins</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Media Management <b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <!--<li><a class="togglenavBar" href="#/upload_ads">Upload Ads</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/current_ads">Current Ads</a>
+                        </li>-->
+                        <li><a class="togglenavBar" href="#/advertisement">Video Advertisement</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/view_image_advertisement">Image Advertisement</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/machine_advertisement">Assign Advertisement</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/full_advertisement_report">Advertisement Report</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="togglenavBar" href="#/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<br/><br/><br/><br/>
+<script>
+    //var togglenavBar = document.querySelectorAll('.togglenavBar');
+      $(".togglenavBar").click(function (event) {
+    // check if window is small enough so dropdown is created
+    var toggle = $(".navbar-toggle").is(":visible");
+    if (toggle) {
+      $(".navbar-collapse").collapse('hide');
+    }
+  });
+
+  $(".refeshAdvertisementReport").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/advertisement_report") {
+            location.reload();
+        }
+    });
+</script>

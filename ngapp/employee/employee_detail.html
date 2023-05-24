@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 col-md-offset-1" style="margin-top: 50px;">
+    <div class="row">
+      <h3 class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-left">Employee Details</h3>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right">
+        <button class="btn btn-primary" ng-click="addEmployee()">Add Employee</button>
+      </div>
+    </div>
+    <br /><br />
+    <div style="margin-bottom:20px;">
+      <p><strong style="color: black;font-size:16px;">Search</strong><input type="text"
+        ng-keyup="filterReport()" class="inputSearch form-control" ng-model="searchName" placeholder="Search" /></p>
+    </div>
+    <br /><br />
+    <table class="table" id="tableToExport">
+      <tr>
+        <th><input type="checkbox" ng-model="check_all" ng-click="toggleCheckbox()">
+        </th>
+        <th>First Name
+        </th>
+        <th>Last Name
+        </th>
+        <th>Employee ID
+        </th>
+        <th>Mobile Number
+        </th>
+        <th>Passcode
+        </th>
+        <th>Employee Card Number
+        </th>
+        <th ng-hide="isClient">Client Name
+        </th>
+        <th>Group / Department
+        </th>
+      </tr>
+      <tr ng-repeat="user in employees">
+        <td><input type="checkbox" ng-model="user.checked" ng-change="optionToggled()"></td>
+        <td>{{user.firstname}}
+        </td>
+        <td>{{user.lastname}}
+        </td>
+        <td><a ng-model="employee_id" ng-click="set_employee_id(user)">{{user.employeeid}}</a>
+        </td>
+        <td>{{user.mobilenumber}}
+        </td>
+        <td>{{user.jobnumber}}
+        </td>
+        <td>{{user.emp_card_no}}
+        </td>
+        <td ng-hide="isClient">{{user.clientname}}
+        </td>
+        <td>{{user.groupname}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div style="text-align:center;margin: auto;">
+    <div class="login" excel-export export-data="exportData" file-name="{{fileName}}">Download Excel</div>
+    <button type="button" ng-click="deleteSelected()" class="btn btn-danger">Delete</button>
+  </div>
+</div>
+<style>
+  .login {
+    color: #fff;
+    cursor: pointer;
+    background: #3598dc;
+    font-size: 14px;
+    transition: background 0.4s ease;
+    padding: 6px;
+    margin-right: 5px;
+  }
+
+  a:hover {
+    color: #001238;
+  }
+
+  .inputSearch {
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 35px;
+    font-size: 18px;
+    padding-left: 10px;
+    color: black;
+    float: right;
+  }
+
+  .login:hover {
+    background: #0470af;
+  }
+</style>

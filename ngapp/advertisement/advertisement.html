@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <br /><br />
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2"
+            align="center">
+            <br /><br /><br />
+            <div class="row">
+                <h3 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 text-left">Advertisement</h3>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-right">
+                    <button class="btn btn-primary" ng-click="switchUploadAdvertisement()">Upload Advertisement</button>
+                </div>
+            </div>
+            <br /><br />
+            <p><strong style="color: black;font-size:16px;">Search</strong><input type="text"
+                    class="inputSearch form-control" ng-model="searchName" placeholder="Search" /></p>
+        </div>
+        <br /><br /><br />
+        <div class="col-lg-3 col-md-5 col-sm-5 col-xs-5" style="margin: 25px;"
+            ng-repeat="advertisement in data | filter:searchName">
+
+            <video width="300" height="200" style="object-fit: cover;" controls="controls" name="Video Name"
+                src="{{advertisement.ads_path | trustUrl}}"></video>
+
+            <h4 style="font-weight:bold;">{{advertisement.ads_name}}</h4>
+            <h5 style="font-style: italic;">{{advertisement.ads_filetype}}</h5>
+
+            <h4 ng-click="callRemove(advertisement)" style="font-weight:bold;color: maroon;margin-top: 10px;font-size: 12px;">Delete</h4>
+        </div>
+    </div>
+</div>

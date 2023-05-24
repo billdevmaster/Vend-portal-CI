@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="row table_margin" style="text-align: center;">
+        <div ng-hide="editMode">
+            <div class="row">
+                <h3 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 text-left">Clients</h3>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-right">
+                    <button class="btn btn-primary" ng-click="switchAddClient()">Add Client</button>
+                </div>
+            </div>
+            <br /><br />
+            <div>
+                <p class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="margin-bottom: 10px;"><strong
+                        style="color: black;font-size:16px;">Search &nbsp;&nbsp;</strong><input type="text"
+                        class="inputSearch form-control" ng-model="searchName" placeholder="Search" /></p>
+                <br />
+                <div class="col-md-2 img-thumbnail" style="margin: 10px;text-align:center;"
+                    dir-paginate="client in clients | filter:searchName | itemsPerPage: 10" ng-style="{'height': '390px','width': '200px'}">
+                    <h4 style="clear:both;font-weight:bold;margin-bottom:5px;margin-top:10px;color: rgb(20, 1, 90);overflow: hidden;height:21px;" data-toggle="tooltip"
+                    data-placement="left" title="{{client.clientname}}">{{client.clientname}}</h4>
+                    <h5
+                        style="margin-bottom:10px;font-weight:bold;margin-top:15px;width:175px;height:30px;display:block;word-wrap:break-word;">
+                        {{client.role}}</h5>
+                    <h5 style="margin-bottom:10px;margin-top:10px;height:30px;overflow:hidden;">Code : <b>{{client.clientcode}}</b></h5>
+                    <h5 style="margin-bottom:10px;margin-top:5px;height:30px;overflow:hidden;">Username : <b>{{client.username}}</b></h5>
+                    <h5 style="margin-bottom:10px;margin-top:5px;height:40px;display:block;word-wrap:break-word;">Address : <b>{{client.clientaddress}}</b></h5>
+                    <h5 style="margin-bottom:10px;margin-top:5px;height:40px;display:block;word-wrap:break-word;">Email : <b>{{client.clientemail}}</b></h5>
+                    <h5 style="margin-bottom:10px;margin-top:10px;color:rgb(2, 2, 107);">Mobile : <b>{{client.clientphone}}</b></h5>
+                    <button ng-click="resetPassword(client)" style="color:blue;margin-top: 10px;">Reset
+                        Password</button>
+                    <button ng-click="editClient(client)" style="color:blue;margin-top: 10px;">Edit Client</button>
+                    <button ng-click="removeClient(client)" style="color:blue;margin-top: 10px;">Remove Client</button>
+                </div>
+                <dir-pagination-controls class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></dir-pagination-controls>
+            </div>
+        </div>
+        <div ng-show="editMode">
+            <form>
+                <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 table_margin" style="text-align: left;">
+                    <h3 class="text-left">Edit Client Details</h3>
+                    <br /><br />
+                    <div class="form-group">
+                        <label>Client Company Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="client_name" class="form-control" ng-model="client_name">
+                    </div>
+                    <div class="form-group">
+                        <label>Client Code</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="client_code" class="form-control" ng-model="client_code" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Business Registration Number</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="business_registration_number" class="form-control" ng-model="business_registration_number">
+                    </div>
+                    <div class="form-group">
+                        <label>Username (To be used for Portal Login)</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" ng-model="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Client Address</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="client_address" class="form-control" ng-model="client_address">
+                    </div>
+                    <div class="form-group">
+                        <label>Client Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="client_email" type="tel" pattern="[0-9+]*" class="form-control"
+                            ng-model="client_email">
+                    </div>
+                    <div class="form-group">
+                        <label>Client Phone</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="client_phone" class="form-control" ng-model="client_phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Client Role</label>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" ng-model="role" class="user">
+                            <option ng-repeat="x in user_role">{{x}}</option>
+                        </select>
+                    </div>
+                    <br />
+                </div>
+            </form>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="text-center" ng-model="errorMessage"><span class="error-text txt1" ng-bind="errorMessage"
+                        style="color:red;"></span></div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8" style="text-align: left;">
+                <button type="button button_style" class="btn btn-primary"
+                    ng-click="edit_client_detail()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 table_margin">
+      <div class="row">
+        <h3 class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-left">Non functional Location</h3>
+      </div>
+      <br /><br />
+      <div class="row">
+        <div class="col-md-7 col-lg-7 col-xl-7">
+          <label for="daterange" class="control-label">Search</label>
+          <input type="text" class="form-control" id="myInput" ng-keyup="filterReport()"
+            placeholder="Search" ng-model="search" />
+        </div>
+        <div class="col-md-5 col-lg-5 col-xl-5">
+          <label for="daterange" class="control-label">Filter by Date Range</label>
+          <input date-range-picker id="daterange" name="daterange" class="form-control date-picker" type="text"
+            ng-model="date" clearable="true" required />
+        </div>
+      </div>
+      <br /><br />
+      <table class="table" id="tableToExport">
+        <tr>
+          <th>Defect Id
+          </th>
+          <th>Machine Name
+          </th>
+          <th>Product Name
+          </th>
+          <th>Defective Location
+          </th>
+          <th>Error Code
+          </th>
+          <th>Status
+          </th>
+          <th>Timestamp
+          </th>
+        </tr>
+        <tr ng-repeat="non_functional_location in nonFunctionalLocations">
+          <td>{{non_functional_location.defect_id}}
+          </td>
+          <td>{{non_functional_location.machine_name}}
+          </td>
+          <td>{{non_functional_location.product_name}}
+          </td>
+          <td>{{non_functional_location.defective_location}}
+          </td>
+          <td>{{non_functional_location.error_code}}
+          </td>
+          <td>{{non_functional_location.status}}
+          </td>
+          <td>{{non_functional_location.timestamp}}
+          </td>
+        </tr>
+      </table>
+      <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 text-center">
+        <div class="login" excel-export export-data="exportData" file-name="{{fileName}}">Download Excel</div>
+      </div>
+    </div>
+  
+    <br /><br />
+  </div>
+  <style>
+    h4 {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 100%;
+      height: 25px;
+    }
+  
+    .login {
+      color: #fff;
+      cursor: pointer;
+      background: #3598dc;
+      font-size: 14px;
+      transition: background 0.4s ease;
+      padding: 10px;
+    }
+  
+    .login:hover {
+      background: #0470af;
+    }
+  </style>

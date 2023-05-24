@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table_margin">
+        <div class="row">
+            <h3 class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-left">E Receipts</h3>
+        </div>
+        <br /><br />
+        <div class="row">
+            <div class="col-md-7 col-lg-7 col-xl-7">
+                <label for="daterange" class="control-label">Search</label>
+                <input type="text" class="form-control" id="myInput" ng-keyup="filterReport()" placeholder="Search"
+                    ng-model="search_text" />
+            </div>
+            <div class="col-md-5 col-lg-5 col-xl-5">
+                <label for="daterange" class="control-label">Filter by Date Range</label>
+                <input date-range-picker id="daterange" name="daterange" class="form-control date-picker" type="text"
+                    ng-model="date" clearable="true" required />
+            </div>
+        </div>
+        <br /><br />
+        <table class="table" id="tableToExport">
+            <tr>
+                <th>Machine Name
+                </th>
+                <th>Transaction Id
+                </th>
+                <th>Name
+                </th>
+                <th>Email
+                </th>
+                <th>Mobile
+                </th>
+                <th>Timestamp
+                </th>
+                <th>
+                </th>
+            </tr>
+            <tr ng-repeat="ereceipt in ereceipts">
+                <!--      <tr ng-repeat="ereceipt in ereceipts | dateFilter:startDate:endDate"> -->
+                <td>{{ereceipt.machine_name}}
+                </td>
+                <td>{{ereceipt.transaction_id}}
+                </td>
+                <td>{{ereceipt.name}}
+                </td>
+                <td>{{ereceipt.email}}
+                </td>
+                <td>{{ereceipt.mobile_number}}
+                </td>
+                <td>{{ereceipt.date_time}}
+                </td>
+                <td><button type="button" class="btn btn-primary" ng-click="download(ereceipt)">Download</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <br /><br />
+</div>
+<style>
+    h4 {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        height: 25px;
+    }
+
+    .login {
+        color: #fff;
+        cursor: pointer;
+        background: #3598dc;
+        font-size: 14px;
+        transition: background 0.4s ease;
+        padding: 10px;
+    }
+
+    .login:hover {
+        background: #0470af;
+    }
+</style>

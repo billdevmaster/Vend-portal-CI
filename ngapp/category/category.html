@@ -1,0 +1,143 @@
+<div class="container">
+    <div class="row" style="text-align: center;">
+
+        <div ng-hide="editMode || removeMode">
+            <br /><br /><br />
+            <div class="row">
+                <h3 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 text-left">Category</h3>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-right">
+                    <button class="btn btn-primary" ng-click="switchUploadCategoryList()" style="margin-right:10px">Upload Category List</button>
+                    <button class="btn btn-primary" ng-click="switchAddCategory()">Add Category</button>
+                </div>
+            </div>
+            <br /><br />
+            <p class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="margin-bottom: 10px;"><strong
+                    style="color: black;font-size:16px;">Search &nbsp;&nbsp;</strong><input type="text"
+                    class="form-control inputSearch" ng-model="searchName" placeholder="Search" /></p>
+            <br />
+            <div class="col-lg-2 col-md-3 col-sm-5 col-xs-5 img-thumbnail"
+                style="margin: 10px;text-align: -webkit-center;height:290px;max-width: 200px;"
+                ng-repeat="category in data | filter:searchName">
+                <img src={{category.category_image_thumbnail}} class="img-responsive"
+                    style="margin-bottom:5px;margin-top: 10px;height: 150px;">
+                <h4 style="clear:both;font-weight:bold;margin-bottom:5px;margin-top: 10px;" data-toggle="tooltip"
+                    data-placement="left" title="{{category.category_name}}">{{category.category_name}}</h4>
+                <h5 style="clear:both;font-weight:bold;margin-bottom:5px;height: 25px;" data-toggle="tooltip" data-placement="left"
+                    title="{{category.category_id}}">Category Code : {{category.category_id}}</h5>
+                <br />
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-left">
+                        <button ng-click="editCategory(category)" style="color:blue;">Edit</button>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                        <button ng-click="removeCategory(category)" style="color:red;">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container wrapper" style="text-align: left;">
+
+            <form name="form" ng-submit="apply()" role="form" ng-show="editMode || removeMode">
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                        <br /><br /><br /><br />
+                        <h3 class="text-left" ng-show="editMode">Edit Category</h3>
+                        <h3 class="text-left" ng-show="removeMode">Remove Category</h3>
+                        <br /><br />
+                        <div class="form-group col-lg-12">
+                            <label for="input1">Category ID</label>
+                            <input type="text" ng-model="category_id" name="category_id" class="form-control"
+                                id="input1" disabled="disabled">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="input2">Category Name</label>
+                            <input type="text" ng-model="category_name" name="category_name" class="form-control"
+                                id="input2" ng-disabled="model.isDisabled">
+                        </div>
+                        <div class="form-group col-lg-12" ng-hide="isClient">
+                            <label class="input2">Client</label><br />
+                            <select ng-model="machine_client" ng-options="client.clientname for client in clients"
+                                style="min-width: 200px;" class="form-control" id="input3" ng-disabled="model.isDisabled"></select>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12">
+                            <label class="file required control-label" for="category_image">Category Image</label>
+                            <br />
+                            <img ng-src="{{category_image_placeholder}}" class="img-responsive"
+                                style="margin-bottom:5px;" width="300" height="500">
+                            <br />
+                            <input ng-model="category_image" type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                                accept=".png,.jpg" aria-required="true" ngf-max-height="2000" ngf-max-size="2MB"
+                                file-model="category_image" name="category_image" id="category_image" ng-hide="removeMode">
+                            <br />
+                            <div class="alert alert-danger" ng-if="errorMsg" ng-hide="removeMode">
+                                {{errorMsg}}
+                            </div>
+                            <div class="alert alert-danger" ng-show="errFile.$error">File Size Limit Exceeded , Please
+                                upload a file less than 2 MB.</div>
+                            <span class="help-block" ng-hide="removeMode">This field is required</span>
+                            <span class="progress" ng-show="f.progress > 0">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                    style="width:{{f.progress}}%" ng-bind="f.progress + '%'">
+                                </div>
+                            </span>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <button type="submit" class="btn btn-primary" ng-hide="removeMode"
+                                ng-click="callAdd()">Submit</button>
+                        </div>
+                        <div class="alert alert-danger fade in col-lg-12" id="buttonAlertNegative" ng-show="removeMode">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Warning!</strong> This action cannot be undone.
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <button type="submit" class="btn btn-danger" ng-show="removeMode"
+                                ng-click="callRemove()">Remove</button>
+                        </div>
+
+                        <br />
+                        <div class="alert alert-danger fade in col-lg-12" id="buttonAlertNegative"
+                            style="display: none;">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Error!</strong> A <a href="#" class="alert-link">problem</a> has been occurred while
+                            submitting your data.
+                        </div>
+                        <div class="alert alert-success fade in col-lg-12" id="buttonAlertPositive"
+                            style="display: none;">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Success!</strong> Your <a href="#" class="alert-link">category</a> has been sent
+                            successfully.
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    .inputSearch {
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 75%;
+        height: 35px;
+        font-size: 18px;
+        padding-left: 10px;
+        color: black;
+    }
+
+    h4 {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        height: 25px;
+    }
+</style>

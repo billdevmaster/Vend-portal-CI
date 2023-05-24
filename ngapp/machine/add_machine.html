@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-3 row center">
+        <br /><br /><br /><br />
+        <h3 class="form-group col-lg-12">Add Machine</h3>
+        <br /><br />
+        <div class="form-group col-lg-12" style="margin-top:10px">
+            <label>Machine Login Name</label>
+            <select class="form-control" ng-model="machine_username" class="user" ng-options="user.username for user in users">
+                <option ng-repeat="x in user_role">{{x}}</option>
+            </select>
+        </div>
+        <div class="form-group col-lg-12">
+            <label>Machine Name or ID</label>
+            <input type="text" name="client_name" class="form-control" ng-model="machine_name"  ng-disabled="isDisabled">
+        </div>
+        <div class="row col-lg-12" style="margin-top:10px;margin-bottom: 10px;" ng-hide="isDisabled">
+            <div class="text-center" ng-model="availabilityMessageError"><span class="error-text txt1"
+                    ng-bind="availabilityMessageError" style="color:red;"></span></div>
+        </div>
+        <div class="row col-lg-12" style="margin-top:10px;margin-bottom: 10px;" ng-show="isDisabled">
+            <div class="text-center" ng-model="availabilityMessageSuccess"><span class="error-text txt1"
+                    ng-bind="availabilityMessageSuccess" style="color:rgb(29, 104, 0);"></span></div>
+        </div>
+        <div class="form-group col-lg-12" ng-hide="isClient">
+            <label class="input2">Client</label><br />
+            <select ng-model="machine_client" ng-options="client.clientname for client in clients"
+                style="min-width: 200px;" class="form-control" id="input3"></select>
+        </div>
+        <div class="form-group col-lg-12">
+            <label>Number of Rows</label>
+            <input type="text" name="machine_row" class="form-control" ng-model="machine_row">
+        </div>
+        <div class="form-group col-lg-12">
+            <label>Number of Columns</label>
+            <input type="text" name="machine_column" class="form-control" ng-model="machine_column">
+        </div>
+        <div class="form-group col-lg-12">
+            <label>Machine Address</label>
+            <input type="text" name="machine_address" class="form-control" ng-model="machine_address">
+        </div>
+        <div class="form-group col-lg-12">
+            <label>Machine Latitude</label>
+            <input type="text" name="machine_latitude" class="form-control" ng-model="machine_latitude">
+        </div>
+        <div class="form-group col-lg-12">
+            <label>Machine Longitude</label>
+            <input type="text" name="machine_longitude" class="form-control" ng-model="machine_longitude">
+        </div>
+        <div class="form-group col-lg-12">
+            <label>Machine Category Type</label>
+            <select class="form-control" ng-model="machine_category_type" class="user" ng-options="o as o for o in machineCategoryTypeOptions">
+            </select>
+        </div>
+        <div class="form-group col-lg-12" style="margin-top:20px;">
+            <button type="submit" class="btn btn-primary" ng-click="addMachine()">Add Machine</button>
+        </div>
+        <div class="row" style="margin-top:10px;">
+            <div class="col-lg-12">
+                <div class="text-center" ng-model="errorMessage"><span class="error-text txt1" ng-bind="errorMessage"
+                        style="color:red;"></span></div>
+            </div>
+        </div>
+        <br /><br />
+    </div>
+</div>

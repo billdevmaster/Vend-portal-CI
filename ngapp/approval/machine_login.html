@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="col-md-12 table_margin">
+      <div class="row">
+        <h3 class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-left">Machine Login</h3>
+      </div>
+      <br /><br />
+      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1"
+        align="center" style="margin-bottom:20px;">
+        <p><strong style="color: black;font-size:16px;">Search</strong><input type="text" id="myInput"
+            onkeyup="myFunction()" class="inputSearch form-control" ng-model="searchName" placeholder="Search" /></p>
+      </div>
+      <br /><br />
+      <table class="table" id="tableToExport">
+        <tr>
+          <th>Username
+          </th>
+          <th>Client ID
+          </th>
+          <th>First Name
+          </th>
+          <th>Last Name
+          </th>
+          <th>Mobile Number
+          </th>
+          <th>Email ID
+          </th>
+          <th>Activated On
+          </th>
+          <th>
+          </th>
+          <th>
+          </th>
+        </tr>
+        <tr ng-repeat="user in users">
+          <td>{{user.username}}
+          </td>
+          <td>{{user.client_id}}
+          </td>
+          <td>{{user.firstname}}
+          </td>
+          <td>{{user.lastname}}
+          </td>
+          <td>{{user.mobilenumber}}
+          </td>
+          <td>{{user.emailid}}
+          </td>
+          <td>{{user.timestamp}}
+          </td>
+          <td>
+            <button type="button" class="btn btn-success" ng-show="user.status == -1" ng-click="activateMachineLogin(user)">Approve</button>
+            <label style="color: red" ng-show="user.is_deactivated == 1">Deactivated</label>
+            <label style="color: green" ng-show="user.status == 1 && user.is_deactivated == 0">Activated</label>
+            <label style="color: grey" ng-show="user.status == 0 && user.is_deactivated == 0">Not Assigned</label>
+            <label style="color: red" ng-show="user.status == 2 && user.is_deactivated == 0">Rejected</label>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" ng-show="user.status == -1" ng-click="deactivateMachineLogin(user)">Reject</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <style>
+    .login {
+      color: #fff;
+      cursor: pointer;
+      background: #3598dc;
+      font-size: 14px;
+      transition: background 0.4s ease;
+      padding: 10px;
+    }
+  
+    a:hover {
+      color: #001238;
+    }
+  
+    .inputSearch {
+      background-color: white;
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      width: 80%;
+      height: 35px;
+      font-size: 18px;
+      padding-left: 10px;
+      color: black;
+      float: right;
+    }
+  
+    .login:hover {
+      background: #0470af;
+    }
+  </style>
+  <script>
+    function myFunction() {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tableToExport");
+      tr = table.getElementsByTagName("tr");
+  
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        //console.log(td);
+        if (td) {
+          if (tr[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>

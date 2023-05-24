@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row" style="text-align: center;">
+        <div class="container wrapper" style="text-align: left;">
+            <form name="form" ng-submit="apply()" role="form">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div class="col-lg-12" style="margin-top: 100px;">
+                            <h3 class="text-left" style="margin-bottom: 20px;">Upload Product List</h3>
+                            <a href="http://adportal.vendportal.com/ngapp/assets/csv/sample/sample_product_list.xls" target="_blank">Download Sample Product List Template</a>
+                            <input ng-model="upload_product_list" type="file"
+                                ngf-select="uploadFiles($file, $invalidFiles)" accept=".xls,.csv,.xlsx"
+                                aria-required="true" ngf-max-height="2000" ngf-max-size="2MB"
+                                file-model="upload_product_list" name="upload_product_list"
+                                id="upload_product_list" style="margin-top: 30px;">
+                            <br />
+                            <div class="alert alert-danger" ng-if="errorMsg">
+                                {{errorMsg}}
+                            </div>
+                            <div class="alert alert-danger" ng-show="errFile.$error">File Size Limit Exceeded , Please
+                                upload a file less than 2 MB.</div>
+                            <span class="progress" ng-show="fi.progress > 0">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                    style="width:{{fi.progress}}%" ng-bind="fi.progress + '%'">
+                                </div>
+                            </span>
+                        </div>
+
+                        <div class="form-group col-lg-12">
+                            <button type="submit" class="btn btn-primary" ng-click="uploadProductList()">Upload Product List</button>
+                        </div>
+                        <div class="form-group col-lg-12" ng-if="file_upload_success">
+                            <button class="btn btn-primary" ng-click="goToViewProduct()">View Product Details</button>
+                        </div>
+                        <br />
+                        <div class="form-group col-lg-12 alert alert-success" ng-if="product_success">
+                            {{productSuccess}}
+                        </div>
+                        <div class="form-group col-lg-12 alert alert-danger" ng-if="product_error">
+                            <div ng-repeat="productError in productErrors">
+                                {{productError}}
+                            </div>
+                        </div>
+                        <br />
+                        <div class="alert alert-danger fade in col-lg-12" id="buttonAlertNegative"
+                            style="display: none;">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Error!</strong> A <a href="#" class="alert-link">problem</a> has been occurred while
+                            submitting your data.
+                        </div>
+                        <div class="alert alert-success fade in col-lg-12" id="buttonAlertPositive"
+                            style="display: none;">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Success!</strong> Your <a href="#" class="alert-link">data</a> has been sent
+                            successfully.
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

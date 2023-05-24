@@ -1,0 +1,66 @@
+<div class="container">
+        <div ng-hide="assignMode">
+                <br /><br /><br />
+                <h3 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 text-left">Fill Machine</h3>
+                <br /><br />
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4  col-sm-push-1 col-xs-push-1 img-thumbnail"
+                        align="center" style="margin: 10px;text-align: center;"
+                        dir-paginate="machine in machines | itemsPerPage: 10">
+
+                        <img src="http://tcn.vendportal.com/ngapp/assets/images/machine/vending_machine.png"
+                                class="img-responsive" style="margin-bottom:5px;">
+                        <br /><br />
+                        <h4 style="clear:both;font-weight:bold;margin-bottom:5px;color: rgb(20, 1, 90)"
+                                data-toggle="tooltip" data-placement="left" title="{{machine.machine_name}}">
+                                {{machine.machine_name}}</h4>
+                        <br />
+                        <button ng-click="assignProducts(machine)" class="btn btn-primary"
+                                style="margin-bottom:10px;">Assign Products</button>
+                </div>
+                <dir-pagination-controls class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                        style="text-align: -webkit-center"></dir-pagination-controls>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3 row center" ng-show="assignMode">
+                <br />
+                <h2 class="text-center">Assign Products to Machine</h2>
+                <br /><br />
+                <label class="file required control-label machine-label">Machine Name</label>
+                <label class="file required control-label machine-label">{{machine.machine_name}}</label>
+                <br /><br />
+                <label class="file required control-label machine-label">User Name</label>
+                <label class="file required control-label machine-label">{{machine.machine_username}}</label>
+                <br /><br />
+                <label class="file required control-label machine-label">Category</label>
+                <select ng-model="category" ng-options="category.category_name for category in categories"
+                        ng-hide="no_category"></select>
+                <label class="file required control-label machine-label" ng-show="no_category">No Category</label>
+                <br /><br />
+                <label class="file required control-label machine-label">Product</label>
+                <select ng-model="product"
+                        ng-options="product.product_name for product in products | filter: filterProductList"></select>
+                <br /><br />
+                <label class="file required control-label machine-label">Position</label>
+                <input type="text" ng-model="product_position" />
+                <br /><br /><label class="file required control-label machine-label">Quantity</label>
+                <input type="text" ng-model="product_quantity" />
+                <br /><br />
+                <br /><br />
+                <div class="text-center">
+                        <button type="submit" class="btn btn-info"
+                                ng-click="backToSelectMachine()">Back</button>&nbsp;&nbsp;
+                        <button type="submit" class="btn btn-primary" ng-click="assignProductToMachine()">Save and
+                                Continue</button>
+                </div>
+                <br /><br />
+        </div>
+</div>
+<style>
+        h4 {
+                display: block;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 100%;
+                height: 25px;
+        }
+</style>

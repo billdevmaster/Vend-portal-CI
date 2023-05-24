@@ -1,0 +1,69 @@
+<div class="container wrapper">
+    <form name="form" ng-submit="apply()" role="form">
+        <div class="row table_margin">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <h3 class="form-group col-lg-12">Product Quantity Restriction on Each Employee of a particular Group</h3><br />
+                <div class="form-group col-lg-12" ng-hide="isClient">
+                    <label>Client</label><br />
+                    <select ng-model="machine_client" ng-options="client.clientname for client in clients"
+                      style="min-width: 200px;" class="form-control" ng-change="selectedItemChanged()"></select>
+                  </div>
+                  <div class="form-group col-lg-12">
+                    <label>Group</label>
+                    <select ng-model="group" ng-options="group.group_name for group in groups" style="min-width: 200px;"
+                      class="form-control"></select>
+                  </div>
+                <div class="form-group col-lg-12">
+                    <label>Quantity Per Product</label>
+                    <input type="text" ng-model="quantity" name="quantity" class="form-control">
+                </div>
+                <div class="form-group col-lg-12">
+                    <input type="hidden" name="save">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <br />
+                <div class="alert alert-danger fade in col-lg-12" id="buttonAlertNegative" style="display: none;">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Error!</strong> A <a href="#" class="alert-link">problem</a> has been occurred while
+                    submitting your data.
+                </div>
+                <div class="alert alert-success fade in col-lg-12" id="buttonAlertPositive" style="display: none;">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Success!</strong> Your request has been sent
+                    successfully.
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row col-md-8 col-md-offset-2" ng-hide="showTable">
+        <div class="row">
+            <h3 class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-left">Product Quantity Restriction List</h3>
+        </div>
+        <br /><br />
+        <table class="table">
+            <tr>
+                <th ng-hide="isClient">Client Name
+                </th>
+                <th>Group
+                </th>
+                <th>Total Quantity
+                </th>
+                <th>
+                </th>
+            </tr>
+            <tr ng-repeat="total_quantity_restriction in total_quantity_restrictions">
+                <td ng-hide="isClient">{{total_quantity_restriction.client_name}}
+                </td>
+                <td>{{total_quantity_restriction.group_name}}
+                </td>
+                <td>{{total_quantity_restriction.quantity}}
+                </td>
+                <td>
+                    <img ng-click="removeProductQuantity(total_quantity_restriction)" class="img-responsive" src="ngapp/assets/img/ic_clear.png"
+                    style="height: 20px;width: 20px;cursor: pointer;">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

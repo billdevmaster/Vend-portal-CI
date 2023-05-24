@@ -1,0 +1,228 @@
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+            <a class="navbar-brand" href="#/dashboard">Dashboard</a>
+            <!--<a class="navbar-brand" href="#/home2"><img src="ngapp/assets/img/logo.png" alt="CC2GO Loyalty"
+                style="width:200px;height:70px;"></a> -->
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Product<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <!--<li><a class="togglenavBar" href="#/view_products">View Product</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/add_product">Add Product</a>
+                        </li>-->
+                        <li><a class="togglenavBar refeshEditProduct" href="#/product">Product</a>
+                        </li>
+                        <!--<li><a class="togglenavBar" href="#/view_category">View Category</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/add_category">Add Category</a>
+                        </li>-->
+                        <li><a class="togglenavBar refeshEditCategory" href="#/category">Category</a>
+                        </li>
+                        <!--<li><a class="togglenavBar" href="#/assign_product">Assign Product</a>
+                                </li>-->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Machine<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                       <!--<li><a class="togglenavBar" href="#/add_machine">Add Machine</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/view_machine">View Machine</a>
+                        </li>-->
+                        <li><a class="togglenavBar refeshEditMachine" href="#/machine">Machine</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Machine Logins<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <li><a class="togglenavBar" href="#/add_user">Request Login</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/view_user">Machine Logins</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Employees<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <li><a class="togglenavBar" href="#/employee_detail">Employee Details</a>
+                        </li>
+                        <!--<li><a class="togglenavBar" href="#/add_employee">Add Employee</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/add_employee_group">Add Employee Group</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/add_product_restriction">Add Group Product Restriction</a>
+                        </li>-->
+                        <li><a class="togglenavBar" href="#/employee_group">Employee Group</a></li>
+                        <li><a class="togglenavBar" href="#/view_product_group_restriction">Group Product
+                                Restriction</a>
+                        </li>
+                        <!--<li><a class="togglenavBar" href="#/add_employee_product_restriction">Add Employee Product
+                                Restriction</a>
+                        </li>-->
+                        <li><a class="togglenavBar" href="#/view_employee_product_restriction">Employee Product
+                                Restriction</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/product_quantity_restriction">Product Quantity Restriction</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/total_quantity_restriction">Group Quantity Restriction</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/employee_reports">Employee Reports</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/upload_employee_list">Upload Employee List</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <!--<li><a class="togglenavBar" href="#/full_advertisement_report">Advertisement Report</a>
+                        </li> -->
+                       <!-- <li><a class="togglenavBar refeshAdvertisementReport" href="#/advertisement_report">Machine
+                                Specific Advertisement
+                                Report</a>
+                        </li> -->
+                        <li><a class="togglenavBar" href="#/full_sale_report">Sales Report</a>
+                        </li>
+                        <li><a class="togglenavBar refeshEReceipt" href="#/e_receipt">E Receipts</a>
+                        </li>
+                       <!-- <li><a class="togglenavBar refeshSaleReport" href="#/sale_report">Machine Specific Sales
+                                Report</a>
+                        </li> -->
+                        <li><a class="togglenavBar refeshFullFeedbackReport" href="#/full_feedback_report">Feedback Report</a>
+                        </li>
+                        <li><a class="togglenavBar refeshNonFunctionalLocation" href="#/non_functional_location">Vend Errors</a>
+                        </li>
+                        <li><a class="togglenavBar refeshGiftReport" href="#/gift_report">Gift Report</a>
+                        </li>
+                        <!--<li><a class="togglenavBar refeshFeedbackReport" href="#/feedback_report">Machine Specific Feedback Report</a>
+                        </li> -->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Media Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <!--<li><a class="togglenavBar" href="#/upload_ads">Upload Ads</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/current_ads">Current Ads</a>
+                        </li>-->
+                        <li><a class="togglenavBar" href="#/advertisement">Video Advertisement</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/view_image_advertisement">Image Advertisement</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/machine_advertisement">Assign Advertisement</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/full_advertisement_report">Advertisement Report</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="togglenavBar" href="#/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<br /><br /><br /><br />
+<script>
+    //var togglenavBar = document.querySelectorAll('.togglenavBar');
+    $(".togglenavBar").click(function (event) {
+        // check if window is small enough so dropdown is created
+        var toggle = $(".navbar-toggle").is(":visible");
+        if (toggle) {
+            $(".navbar-collapse").collapse('hide');
+        }
+    });
+
+    $(".refeshSaleReport").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/sale_report") {
+            location.reload();
+        }
+    });
+
+    $(".refeshNonFunctionalLocation").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/non_functional_location") {
+            location.reload();
+        }
+    });
+
+    $(".refeshGiftReport").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/gift_report") {
+            location.reload();
+        }
+    });
+
+    $(".refeshEReceipt").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/e_receipt") {
+            location.reload();
+        }
+    });
+
+    $(".refeshAdvertisementReport").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/advertisement_report") {
+            location.reload();
+        }
+    });
+    $(".refeshEditCategory").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/category") {
+            location.reload();
+        }
+    });
+
+    $(".refeshEditProduct").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/product") {
+            location.reload();
+        }
+    });
+
+    $(".refeshEditMachine").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/machine") {
+            location.reload();
+        }
+    });
+
+    $(".refeshEditClient").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/edit_client") {
+            location.reload();
+        }
+    });
+
+    $(".refeshFillMachine").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/fill_machine") {
+            location.reload();
+        }
+    });
+</script>

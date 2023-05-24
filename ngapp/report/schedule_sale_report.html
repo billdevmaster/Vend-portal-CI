@@ -1,0 +1,70 @@
+<div class="container wrapper">
+    <form name="form" ng-submit="apply()" role="form">
+        <div class="row table_margin">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <h3 class="form-group col-lg-12">Schedule Sale Report</h3><br />
+                <div class="form-group col-lg-12" ng-hide="isClient">
+                    <label>Client</label><br />
+                    <select ng-model="machine_client" ng-options="client.clientname for client in clients"
+                        style="min-width: 200px;" class="form-control"></select>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label>Recipient Email</label>
+                    <input type="email" ng-model="email" name="email" class="form-control">
+                </div>
+                <div class="form-group col-lg-12">
+                    <label>Frequency</label><br />
+                    <select ng-model="frequency" ng-options="o as o for o in frequencyOptions"
+                        style="min-width: 200px;" class="form-control"></select>
+                </div>
+
+                <div class="form-group col-lg-12">
+                    <input type="hidden" name="save">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <br />
+                <div class="alert alert-danger fade in col-lg-12" id="buttonAlertNegative" style="display: none;">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Error!</strong> A <a href="#" class="alert-link">problem</a> has been occurred while
+                    submitting your data.
+                </div>
+                <div class="alert alert-success fade in col-lg-12" id="buttonAlertPositive" style="display: none;">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Success!</strong> Your <a href="#" class="alert-link">Group Name</a> has been sent
+                    successfully.
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row col-md-8 col-md-offset-2" ng-hide="showTable">
+        <div class="row">
+            <h3 class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-left">Scheduled Recipient Email List</h3>
+        </div>
+        <br /><br />
+        <table class="table">
+            <tr>
+                <th ng-hide="isClient">Client Name
+                </th>
+                <th>Email
+                </th>
+                <th>Frequency
+                </th>
+                <th>
+                </th>
+            </tr>
+            <tr ng-repeat="report_email in report_emails">
+                <td ng-hide="isClient">{{report_email.client_name}}
+                </td>
+                <td>{{report_email.email}}
+                </td>
+                <td>{{report_email.frequency}}
+                </td>
+                <td>
+                    <img ng-click="removeScheduleEmployeeReport(report_email)" class="img-responsive" src="ngapp/assets/img/ic_clear.png"
+                    style="height: 20px;width: 20px;cursor: pointer;">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

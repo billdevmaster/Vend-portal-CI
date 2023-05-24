@@ -1,0 +1,49 @@
+<div class="container">
+        <div class="col-md-8 col-md-offset-2 table_margin" >
+        <table class="table" id="tableToExport">
+            <tr>
+                <th>Card No.
+                </th>
+                <th>First Name
+                </th>
+                <th>Last Name
+                </th>
+                <th>Email
+                </th>
+                <th>Balance Available
+                </th>
+            </tr>
+            <tr ng-repeat="user in data_user">
+                <td><a ng-model="card_no" ng-click="set_card_no(user)">{{user.card_no}}</a>
+                </td>
+                <td>{{user.firstname}}
+                </td>
+                <td>{{user.lastname}}
+                </td>
+                <td>{{user.emailid}}
+                </td>
+                <td>{{user.account_balance}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-8 col-md-offset-2" >
+        <div class="login" excel-export export-data="exportData" file-name="{{fileName}}">Download Excel</div>
+    </div>
+    </div>
+    <style>
+    .login{
+    color: #fff;
+    cursor: pointer;
+    background: #3598dc;
+    font-size: 14px;
+    transition: background 0.4s ease;
+    padding: 10px;
+    }
+
+    a:hover {
+color: #001238;
+}
+    
+    .login:hover{ background: #0470af; }
+    </style>

@@ -1,0 +1,87 @@
+<div class="container wrapper">
+  <form name="form" role="form">
+    <div class="row">
+      <div class="col-lg-3 col-md-2 col-sm-1"></div>
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <br /><br /><br />
+        <h3 class="form-group col-lg-12">Assign Advertisement to Machine</h3><br />
+        <br /><br />
+        <div class="form-group col-lg-12" ng-hide="isClient">
+          <label>Client</label><br />
+          <select ng-model="machine_client" ng-options="client.clientname for client in clients"
+            style="min-width: 200px;" class="form-control" ng-change="selectedClientChanged()"></select>
+        </div>
+        <div class="form-group col-lg-12">
+          <label>Machine Name</label>
+          <select ng-model="machine_name" ng-options="machine.machine_name for machine in machines"
+            style="min-width: 200px;" class="form-control"></select>
+        </div>
+        <div class="form-group col-lg-12">
+          <label>Advertisement Name or ID</label>
+          <select ng-model="advertisement_name" ng-options="advertisement.ads_name for advertisement in advertisements"
+          style="min-width: 200px;" class="form-control"></select>
+        </div>
+        <div class="form-group col-lg-12">
+          <label>Advertisement Position</label>
+          <select ng-model="position" ng-change="selectedItemChanged()" style="min-width: 200px;" class="form-control">
+            <option value="Homescreen">Home Screen</option>
+            <option value="Screensaver">Screensaver</option>
+            <option value="Product Screen">Product Screen</option>
+            <option value="Product Detail Screen">Product Detail Screen</option>
+            <option value="Category Selection">On Selection of Category</option>
+            <option value="Product Selection">On Selection of Product</option>
+          </select>
+        </div>
+        <div class="form-group col-lg-12" ng-show="position == 'Category Selection'">
+          <label>On Selection of Category</label>
+          <select ng-model="category_selection" ng-change="selectedItemChanged()"
+            ng-options="category.category_name for category in categories" style="min-width: 200px;"
+            class="form-control">
+          </select>
+        </div>
+        <div class="form-group col-lg-12" ng-show="position == 'Product Selection'">
+          <label>On Selection of Product</label>
+          <select ng-model="product_selection" ng-change="selectedItemChanged()"
+            ng-options="product.product_name for product in products" style="min-width: 200px;" class="form-control">
+          </select>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <label>Start Date</label>
+            <input type="date" ng-model="start_date_time" id="start_date_time" name="start_date_time"
+              class="form-control" ng-change="listenStartDateChange()">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <label>End Date</label>
+            <input type="date" ng-model="end_date_time" id="end_date_time" name="end_date_time" class="form-control">
+          </div>
+        </div>
+        <div class="form-group col-lg-12">
+          <br />
+          <div class="alert alert-danger" ng-if="errorMsg">
+            {{errorMsg}}
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary" ng-click="assignAdvertisement()">Submit</button>
+          </div>
+          <br /><br />
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+</div>
+<script>
+  $('.restrict-special-character').keypress(function (e) {
+    var regex = new RegExp("^[a-zA-Z0-9-_. ]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+      return true;
+    }
+
+    e.preventDefault();
+    return false;
+  });
+</script>

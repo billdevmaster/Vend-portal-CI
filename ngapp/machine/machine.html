@@ -1,0 +1,152 @@
+<div class="container">
+    <div class="row" style="text-align: center;">
+        <br />
+        <div ng-hide="editMode || removeMode">
+            <br /><br /><br />
+            <div class="row">
+                <h3 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 text-left">Machine</h3>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-right">
+                    <button class="btn btn-primary" ng-click="switchAddMachine()">Add Machine</button>
+                </div>
+            </div><br /><br />
+            <p class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="margin-bottom: 10px;"><strong
+                    style="color: black;font-size:16px;">Search &nbsp;&nbsp;</strong><input type="text"
+                    class="inputSearch form-control" ng-model="searchName" placeholder="Search" /></p>
+            <br />
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4 img-thumbnail" align="center"
+                style="margin: 10px;text-align: center;" dir-paginate="machine in data | filter:searchName | itemsPerPage: 10">
+
+                <img src="http://tcn.vendportal.com/ngapp/assets/images/machine/vending_machine.png"
+                    class="img-responsive" style="margin-bottom:5px;">
+                <br /><br />
+                <h4 style="clear:both;font-weight:bold;margin-bottom:5px;color: rgb(20, 1, 90)" data-toggle="tooltip"
+                    data-placement="left" title="{{machine.machine_name}}">{{machine.machine_name}}</h4>
+                <br />
+                <h5 style="clear:both;margin-bottom:5px;color: rgb(20, 1, 90);overflow: hidden;height:20px;"
+                    data-toggle="tooltip" data-placement="left" title="{{machine.machine_username}}">Login :
+                    {{machine.machine_username}}
+                </h5>
+                <button ng-click="viewProductsList(machine)" style="color:blue;margin-top: 10px;">Planogram</button>
+                <br />
+                <button ng-click="uploadPlanogram(machine)" style="color:blue;margin-top: 10px;">Upload
+                    Planogram</button>
+                <br />
+                <button ng-click="resetPlanogram(machine)" style="color:blue;margin-top: 10px;">Reset Planogram</button>
+                <br />
+                <button ng-click="configure(machine)" style="color:blue;margin-top: 10px;">Configure</button>
+                <br />
+                <button ng-click="cloneMachine(machine)" style="color:blue;margin-top: 10px;">Clone Machine</button>
+                <br /><br />
+                <div class="col-lg-5">
+                    <button ng-click="editMachine(machine)" style="color:blue;">Edit</button>
+                </div>
+                <div class="col-lg-2">
+                
+                </div>
+                <div class="col-lg-5">
+                    <button ng-click="removeMachine(machine)" style="color:red;">Remove</button>
+                </div>
+                </div>
+                <dir-pagination-controls class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></dir-pagination-controls>
+            </div>
+        </div>
+        <div class="container wrapper" style="text-align: left;">
+
+            <form name="form" ng-submit="apply()" role="form" ng-show="editMode || removeMode">
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                        <br />
+                        <br />
+                        <br />
+                        <h3 class="form-group col-lg-12">{{title}}</h3><br />
+                        <h5 class="form-group col-lg-12">{{cloneMessage}}</h5><br />
+                        <div class="form-group col-lg-12">
+                            <label for="input1">Machine ID / Name</label>
+                            <input type="text" ng-model="machine_id" name="machine_id" class="form-control" id="input1"
+                                ng-disabled="isDisabled" style="margin-bottom: 10px;">
+                            <!--<label style="color: rgb(7, 17, 160);" ng-click="checkAvailability()">Check
+                                Availability</label>
+                            <label style="color: rgb(7, 17, 160);margin-left: 10px;" ng-click="editMachineName()"
+                                ng-show="isDisabled">Edit</label>-->
+                            <div class="row col-lg-12" style="margin-top:5px;" ng-hide="isDisabled">
+                                <div ng-model="availabilityMessageError"><span class="error-text txt1"
+                                        ng-bind="availabilityMessageError" style="color:red;"></span></div>
+                            </div>
+                            <div class="row col-lg-12" style="margin-top:5px;" ng-show="isDisabled">
+                                <div ng-model="availabilityMessageSuccess"><span class="error-text txt1"
+                                        ng-bind="availabilityMessageSuccess" style="color:rgb(29, 104, 0);"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label class="file required control-label machine-label">Machine Login Name</label><br />
+                            <select ng-model="machine_username" id="machine_username" ng-show="editMode"
+                                ng-options="user.username for user in users" class="form-control"></select>
+                            <input type="text" ng-model="machine_user_name" name="machine_user_name"
+                                class="form-control" ng-show="removeMode" id="input1" disabled="disabled">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="input2">Machine Address</label>
+                            <input type="text" ng-model="machine_address" name="machine_address" class="form-control"
+                                id="input2" ng-disabled="model.isDisabled">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="input2">Machine Latitude</label>
+                            <input type="text" ng-model="machine_latitude" name="machine_latitude" class="form-control"
+                                id="input2" ng-disabled="model.isDisabled">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="input2">Machine Longitude</label>
+                            <input type="text" ng-model="machine_longitude" name="machine_longitude"
+                                class="form-control" id="input2" ng-disabled="model.isDisabled">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <button type="submit" class="btn btn-primary" ng-hide="removeMode"
+                                ng-click="callAdd()">{{buttonName}}</button>
+                        </div>
+                        <div class="alert alert-danger fade in col-lg-12" id="buttonAlertNegative" ng-show="removeMode">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Warning!</strong> This action cannot be undone.
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <button type="submit" class="btn btn-danger" ng-show="removeMode"
+                                ng-click="callRemove()">Remove</button>
+                        </div>
+
+                        <br />
+                        <div class="alert alert-danger fade in col-lg-12" id="buttonAlertNegative"
+                            style="display: none;">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Error!</strong> A <a href="#" class="alert-link">problem</a> has been occurred while
+                            submitting your data.
+                        </div>
+                        <div class="alert alert-success fade in col-lg-12" id="buttonAlertPositive"
+                            style="display: none;">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Success!</strong> Your <a href="#" class="alert-link">category</a> has been sent
+                            successfully.
+                        </div>
+                        <div class="col-lg-12">
+                            <div ng-model="errorMessage"><span class="error-text txt1" ng-bind="errorMessage"
+                                    style="color:red;"></span></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    h4 {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        height: 25px;
+    }
+</style>

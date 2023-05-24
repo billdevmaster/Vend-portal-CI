@@ -1,0 +1,96 @@
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+            <a class="navbar-brand" href="#/dashboard">Dashboard</a>
+            <!--<a class="navbar-brand" href="#/home2"><img src="ngapp/assets/img/logo.png" alt="CC2GO Loyalty"
+                style="width:200px;height:70px;"></a> -->
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Employees<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <li><a class="togglenavBar" href="#/employee_detail">Employee Details</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/employee_group">Employee Group</a></li>
+                        <li><a class="togglenavBar" href="#/view_product_group_restriction">Group Product
+                                Restriction</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/view_employee_product_restriction">Employee Product
+                                Restriction</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/product_quantity_restriction">Product Quantity Restriction</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/total_quantity_restriction">Group Quantity Restriction</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/employee_reports">Employee Reports</a>
+                        </li>
+                        <li><a class="togglenavBar" href="#/upload_employee_list">Upload Employee List</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <li><a class="togglenavBar" href="#/full_sale_report">Sales Report</a>
+                        </li>
+                        <li><a class="togglenavBar refeshEReceipt" href="#/e_receipt">E Receipts</a>
+                        </li>
+                        <li><a class="togglenavBar refeshFullFeedbackReport" href="#/full_feedback_report">Feedback Report</a>
+                        </li>
+                        <li><a class="togglenavBar refeshNonFunctionalLocation" href="#/non_functional_location">Vend Errors</a>
+                        </li>
+                        <li><a class="togglenavBar refeshGiftReport" href="#/gift_report">Gift Report</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="togglenavBar" href="#/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<br /><br /><br /><br />
+<script>
+    //var togglenavBar = document.querySelectorAll('.togglenavBar');
+    $(".togglenavBar").click(function (event) {
+        // check if window is small enough so dropdown is created
+        var toggle = $(".navbar-toggle").is(":visible");
+        if (toggle) {
+            $(".navbar-collapse").collapse('hide');
+        }
+    });
+
+    $(".refeshNonFunctionalLocation").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/non_functional_location") {
+            location.reload();
+        }
+    });
+    $(".refeshEReceipt").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/e_receipt") {
+            location.reload();
+        }
+    });
+
+    $(".refeshGiftReport").click(function (event) {
+        var locationString = String(location);
+        strFine = locationString.substring(locationString.lastIndexOf('/'));
+        if (strFine === "/gift_report") {
+            location.reload();
+        }
+    });
+</script>

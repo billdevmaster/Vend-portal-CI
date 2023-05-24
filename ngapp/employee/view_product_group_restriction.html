@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row col-md-8 col-md-offset-2 table_margin">
+        <div class="row">
+            <h3 class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-left">Group Product Restriction</h3>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-right">
+                <button class="btn btn-primary" ng-click="addRestriction()">Add Group Product Restriction</button>
+            </div>
+        </div>
+        <br /><br /><br />
+        <table class="table" id="tableToExport">
+            <tr>
+                <th>Group / Department
+                </th>
+                <th>Restricted Products
+                </th>
+                <th>
+                </th>
+            </tr>
+            <tr ng-repeat="group_data in data">
+                <td>{{group_data.group_name}}
+                </td>
+                <td>{{group_data.product_name}}
+                </td>
+                <td>
+                    <img ng-click="callRemove(group_data)" class="img-responsive" src="ngapp/assets/img/ic_clear.png"
+                    style="height: 20px;width: 20px;cursor: pointer;">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

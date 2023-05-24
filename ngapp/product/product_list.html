@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row" style="text-align: center;" >
+        <br/>
+        <div>
+            <p><strong style="color: black;font-size:16px;">Search &nbsp;&nbsp;</strong><input type="text" class="inputSearch" ng-model="searchName" placeholder="Search" /></p>
+            <br/>
+            <div class="col-md-2 img-thumbnail" style="margin: 10px;text-align:center;" ng-repeat="product in data | filter:searchName">
+                    <h4 style="clear:both;font-weight:bold;margin-bottom:10px;margin-top:10px;">{{product.product_name}}</h4>    
+                <img src={{product.product_image_thumbnail}}  class="img-responsive" style="margin-bottom:5px;">
+                    <h5 style="margin-bottom:10px;margin-top:15px;">{{product.product_description}}</h5>
+                    <h4 style="margin-bottom:10px;margin-top:15px;color:red;font-weight: bold;">$ {{product.product_price}}</h5>
+                    <br/>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .inputSearch {
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    width:75%;
+    height:35px;
+    font-size: 18px;
+    padding-left: 10px;
+    color:black;
+}
+</style>

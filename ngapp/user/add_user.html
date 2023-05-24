@@ -1,0 +1,70 @@
+<div class="container">
+    <form>
+        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 table_margin">
+            <h3 class="text-left">Request a Machine Login</h3>
+            <br /><br />
+            <div class="form-group" ng-hide="isClient">
+                <label class="input2">Client</label><br />
+                <select ng-model="machine_client" ng-options="client.clientname for client in clients"
+                    style="min-width: 200px;" class="form-control" id="input3"></select>
+            </div>
+            <div class="form-group">
+                <label>First Name:</label>
+            </div>
+            <div class="form-group">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="add_user_first_name">
+            </div>
+            <div class="form-group">
+                <label>Last Name:</label>
+            </div>
+            <div class="form-group">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="add_user_last_name">
+            </div>
+            <div class="form-group">
+                <label>Mobile:</label>
+            </div>
+            <div class="form-group">
+                <input type="text" name="user_detail_card" type="tel" pattern="[0-9+]*" class="form-control" ng-model="add_user_mobile_number">
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+            </div>
+            <div class="form-group">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="add_user_email_id">
+            </div>
+            <div class="form-group">
+                <label>Machine Login Name:</label>
+            </div>
+            <div class="form-group">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="add_user_name">
+            </div>
+            <div class="form-group">
+                <label>Machine Login Password:</label>
+            </div>
+            <div class="form-group">
+                <input type="password" name="user_detail_card" class="form-control" ng-model="add_user_password">
+            </div>
+            <div class="form-group">
+                <label>Confirm Machine Login Password:</label>
+            </div>
+            <div class="form-group">
+                <input type="password" name="user_detail_card" class="form-control"
+                    ng-model="add_user_confirm_password">
+            </div>
+
+
+            <br /><br />
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+    </form>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="text-center" ng-model="errorMessage"><span class="error-text txt1" ng-bind="errorMessage"
+                style="color:red;"></span></div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8">
+        <button type="button button_style" class="btn btn-primary" ng-click="add_user_detail()" ng-disabled="disableButton">Submit</button>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+</div>

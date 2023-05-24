@@ -1,0 +1,91 @@
+<div class="container wrapper">
+    <form name="form" role="form">
+      <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-1"></div>
+        <div class="col-lg-6 col-md-8 col-sm-10">
+          <br /><br /><br />
+          <h3 class="form-group col-lg-12">Upload Image Advertisement</h3><br />
+          <br/>
+          <div class="form-group col-lg-12">
+            <label>Advertisement Name or ID</label>
+            <input type="text" ng-model="image_advertisement_title" class="form-control restrict-special-character" maxlength="35">
+          </div>
+          <div class="form-group col-lg-12" ng-hide="isClient">
+            <label>Client</label><br />
+            <select ng-model="machine_client" ng-options="client.clientname for client in clients"
+              style="min-width: 200px;" class="form-control" ng-change="selectedClientChanged()"></select>
+          </div>
+          <div class="form-group col-lg-12">
+            <label>Machine</label>
+            <select ng-model="machine_name" ng-options="machine.machine_name for machine in machines"
+              style="min-width: 200px;" class="form-control"></select>
+          </div>
+          <div class="form-group col-lg-12">
+            <label>Image Position</label>
+            <select ng-model="position" ng-change="selectedItemChanged()" style="min-width: 200px;" class="form-control">
+              <option value="Slideshow">Slideshow</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <label>Start Date</label>
+              <input type="date" ng-model="start_date_time" id="start_date_time" name="start_date_time"
+                class="form-control">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <label>End Date</label>
+              <input type="date" ng-model="end_date_time" id="end_date_time" name="end_date_time" class="form-control">
+            </div>
+          </div>
+          <br />
+          <br />
+          <br />
+          <div class="form-group col-lg-12">
+            <br />
+            <label>Upload Advertisement File</label>
+            <input type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept=".jpg,.png,.jpeg" required="required"
+              aria-required="true" ngf-max-height="2000" ngf-max-size="2MB" file-model="candidate_cv" name="candidate_cv"
+              id="candidate_cv" class="form-control">
+          </div>
+          <div class="form-group col-lg-12" style="margin-top: 10px;">
+            <label
+              class="file required control-label">Recommended Format / Resolution - .png file, Max File size 2 MB, Portrait, Width * Height (720*1280 )</label><br />
+          </div>
+          <div class="form-group col-lg-12">
+            <br />
+            <div class="alert alert-danger" ng-if="errorMsg">
+              {{errorMsg}}
+            </div>
+            <div class="alert alert-danger" ng-show="errFile.$error">File Size Limit Exceeded , Please upload a file less
+              than
+              2 MB.</div>
+            <span class="progress" ng-show="f.progress > 0">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:{{f.progress}}%"
+                ng-bind="f.progress + '%'">
+              </div>
+            </span>
+            <br />
+            <div>
+              <button type="submit" class="btn btn-primary" ng-click="uploadAd()">Upload Advertisement</button>
+            </div>
+            <br /><br />
+          </div>
+  
+        </div>
+  
+      </div>
+  
+    </form>
+  </div>
+  <script>
+    $('.restrict-special-character').keypress(function (e) {
+      var regex = new RegExp("^[a-zA-Z0-9-_. ]+$");
+      var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+      if (regex.test(str)) {
+        return true;
+      }
+  
+      e.preventDefault();
+      return false;
+    });
+  </script>

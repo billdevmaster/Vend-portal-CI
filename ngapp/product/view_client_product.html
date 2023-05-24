@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row table_margin" style="text-align: center;">
+        <h3 class="col-lg-offset-1 col-md-offset-1 text-left">Please Select a Client to View Products</h3>
+        <br /><br />
+        <div>
+            <p><strong style="color: black;font-size:16px;">Search &nbsp;&nbsp;</strong><input type="text"
+                    class="inputSearch form-control" ng-model="searchName" placeholder="Search" /></p>
+            <br />
+            <div class="col-md-2 img-thumbnail" style="margin: 10px;text-align:center;"
+                ng-repeat="client in clients | filter:searchName" ng-style="{'height': '245px','width': '200px'}">
+                <h4 style="clear:both;font-weight:bold;margin-bottom:10px;margin-top:10px;">{{client.clientname}}</h4>
+                <h5 style="margin-bottom:10px;margin-top:15px;">{{client.clientcode}}</h5>
+                <h5 style="margin-bottom:10px;margin-top:15px;width:175px;height:30px;display:block;word-wrap:break-word;">{{client.clientaddress}}</h5>
+                <h5 style="margin-bottom:10px;margin-top:15px;width:175px;height:30px;display:block;word-wrap:break-word;">{{client.clientemail}}</h5>
+                <h5 style="margin-bottom:10px;margin-top:15px;color:rgb(2, 2, 107);font-weight: bold;">
+                    {{client.clientphone}}</h5>
+                <button type="button button_style" class="btn btn-primary" ng-click="viewMachine(client)">View Product</button>  
+            </div>
+        </div>
+    </div>
+</div>

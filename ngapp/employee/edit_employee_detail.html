@@ -1,0 +1,54 @@
+<div class="container">
+        <form>
+            <br/><br/>
+            <h2 class="text-center">Employee Detail</h2>
+            <br/><br/>
+            <div class="form-group col-md-2 col-md-offset-2">
+                <label>Employee ID:</label> 
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="employeeid" disabled>
+            </div>
+            <div class="form-group col-md-2 col-md-offset-2">
+                <label>First Name:</label> 
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="firstname">
+            </div>
+            <div class="form-group col-md-2 col-md-offset-2">
+                <label>Last Name:</label> 
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="lastname">
+            </div>        
+            <div class="form-group col-md-2 col-md-offset-2">
+                <label>Mobile:</label> 
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="mobilenumber">
+            </div>
+            <div class="form-group col-md-2 col-md-offset-2">
+                <label>Job Number:</label> 
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="jobnumber">
+            </div>
+            <div class="form-group col-md-2 col-md-offset-2">
+                <label>Employee Card No:</label> 
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="emp_card_no">
+            </div>
+            <div class="form-group col-md-2 col-md-offset-2">
+                <label>Account Created By:</label> 
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="accountcreatedby" disabled>
+            </div>
+            <br/><br/>
+        </form>
+        <div class="col-md-6 col-md-offset-4">
+            <button type="button button_style" style="margin:20px;" class="btn btn-primary" ng-click="update_employee_detail()">Save Employee Detail</button> 
+            <button type="button button_style" style="margin:20px;" class="btn btn-danger" ng-click="deactivate_employee()">Delete Employee</button>
+        </div>
+    </div>

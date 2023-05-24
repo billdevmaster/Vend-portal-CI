@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 row center" class="text-center">
+            <br /><br /><br />
+            <h3 class="text-left">Machine Configuration</h3>
+            <br /><br />
+            <label class="file required control-label machine-label">Machine Name</label>
+            <label class="file required control-label machine-label">{{machine.machine_name}}</label>
+            <br /><br />
+            <label class="file required control-label machine-label">Mode</label>
+            <select ng-model="mode" ng-options="o as o for o in modeOptions"
+                ng-init="mode = modeOptions[modeSelected]"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Machine Category Type</label>
+            <select ng-model="machine_category_type" ng-options="o as o for o in machineCategoryTypeOptions"
+                ng-change="machineCategoryChange()"></select>
+            <div ng-model="machine_category_type_change"><span class="error-text txt1"
+                    ng-bind="machine_category_type_message" style="color:red;margin-top: 10px;"></span></div>
+            <br />
+            <label class="file required control-label machine-label">Advertisement Type</label>
+            <select ng-model="advertisement_type" ng-options="o as o for o in advertisementTypeOptions"
+                ng-init="advertisement_type = advertisementTypeOptions[advertisementTypeSelected]"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Advertisement Mode</label>
+            <select ng-model="advertisement_mode" ng-options="o as o for o in advertisementModeOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Screen Size</label>
+            <select ng-model="screen_size" ng-options="o as o for o in screenSizeOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Screen Orientation</label>
+            <select ng-model="screen_orientation" ng-options="o as o for o in screenOrientationOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Feed</label>
+            <select ng-model="feed" ng-options="o as o for o in feedOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Gift Vend</label>
+            <select ng-model="gift" ng-options="o as o for o in giftOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Newsletter</label>
+            <select ng-model="newsletter" ng-options="o as o for o in newsletterOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Screensaver</label>
+            <select ng-model="screensaver" ng-options="o as o for o in screensaverOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Info Button</label>
+            <select ng-model="info_button" ng-options="o as o for o in infoButtonOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Volume Control</label>
+            <select ng-model="volume_control" ng-options="o as o for o in volumeControlOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Wheel Chair Button</label>
+            <select ng-model="wheel_chair" ng-options="o as o for o in wheelChairOptions"></select>
+            <br /><br />
+            <div ng-hide="isFnbManager">
+                <label class="file required control-label machine-label">Play to Win Button</label>
+                <select ng-model="game" ng-options="o as o for o in gameOptions"></select>
+                <br /><br />
+                <div ng-show="game == 'Enable'">
+                    <label class="file required control-label machine-label">Select Game</label>
+                    <select ng-model="game_name" ng-options="o as o for o in gameNameOptions"></select>
+                    <br /><br />
+                </div>
+                <label class="file required control-label machine-label">Asset Tracking</label>
+                <select ng-model="asset_tracking" ng-options="o as o for o in assetTracking"
+                    ng-change="assetTrackingChange()"></select>
+                <br /><br />
+            </div>
+            <div ng-show="showPasscodeSection">
+                <label class="file required control-label machine-label">Job Number Screen</label>
+                <select ng-model="job_number_screen" ng-options="o as o for o in jobNumberScreenOptions"
+                    ng-init="job_number_screen = jobNumberScreenOptions[jobNumberScreenSelected]"></select>
+                <br /><br />
+                <label class="file required control-label machine-label">Passcode Screen</label>
+                <select ng-model="passcode_screen" ng-options="o as o for o in passcodeScreenOptions"
+                    ng-init="passcode_screen = passcodeScreenOptions[passcodeScreenSelected]"></select>
+                <br /><br />
+                <label class="file required control-label machine-label">Cost Center</label>
+                <select ng-model="cost_center" ng-options="o as o for o in costCenterOptions"
+                    ng-init="cost_center = costCenterOptions[costCenterSelected]"></select>
+                <br /><br />
+            </div>
+            <label class="file required control-label machine-label">Advertisement Reporting</label>
+            <select ng-model="advertisement_reporting" ng-options="o as o for o in advertisementReporting"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Helpline</label>
+            <select ng-model="helpline" ng-options="o as o for o in helplineOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Receipt Enabled</label>
+            <select ng-model="receipt" ng-options="o as o for o in receiptOptions"></select>
+            <br /><br />
+            <label class="file required control-label machine-label">Helpline Text</label>
+            <input type="text" ng-model="helpline_text" />
+            <br /><br />
+            <label class="file required control-label machine-label">Customer Care Number</label>
+            <input type="text" ng-model="customer_care_text" />
+            <br /><br />
+            <label class="file required control-label machine-label">Serial Port Number</label>
+            <input type="text" ng-model="serial_port_number" />
+            <br /><br />
+            <label class="file required control-label machine-label">Serial Port Speed</label>
+            <input type="text" ng-model="serial_port_speed" />
+            <br /><br />
+            <br /><br />
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" ng-click="saveMachineConfiguration()">Save
+                    Configuration</button>
+            </div>
+            <br /><br />
+        </div>
+    </div>
+</div>

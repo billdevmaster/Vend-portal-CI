@@ -1,0 +1,70 @@
+<div class="container">
+    <form>
+        <br/><br/>
+        <h2 class="text-center">User Detail</h2>
+        <br/><br/>
+        <div class="form-group col-md-2">
+            <label>Card No:</label> 
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" name="user_detail_card" class="form-control" ng-model="user_detail_card">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Email:</label> 
+        </div>
+        <div class="form-group col-md-4">
+                <input type="text" name="user_detail_card" class="form-control" ng-model="emailid">
+        </div>
+        <div class="form-group col-md-2">
+            <label>First Name:</label> 
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" name="user_detail_card" class="form-control" ng-model="firstname">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Last Name:</label> 
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" name="user_detail_card" class="form-control" ng-model="lastname">
+        </div>        
+        <div class="form-group col-md-2">
+            <label>Mobile:</label> 
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" name="user_detail_card" class="form-control" ng-model="mobilenumber">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Activated On:</label> 
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" name="user_detail_card" class="form-control" ng-model="activated_on">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Last Updated:</label> 
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" name="user_detail_card" class="form-control" ng-model="last_updated">
+        </div>        
+        <div class="form-group col-md-2">
+            <label>Account Balance:</label> 
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" name="user_detail_card" class="form-control" ng-model="account_balance">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Upt No:</label> 
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" name="user_detail_card" class="form-control" ng-model="upt_no" disabled>
+        </div>
+        <br/><br/>
+    </form>
+        <div class="col-lg-12">
+          <div class="text-center" ng-model="errorMessage"><span class="error-text txt1" ng-bind = "errorMessage" style="color:red;"></span></div>
+        </div>
+    <div class="col-md-8">
+        <button type="button button_style" style="margin-right:20px;" class="btn btn-primary" ng-click="user_transaction_details()">Transaction History</button>
+        <button type="button button_style" style="margin:20px;" class="btn btn-danger" ng-click="deactivate_user()">Deactivate User</button>
+        <button type="button button_style" style="margin:20px;" class="btn btn-success" ng-click="update_user_detail()">Save</button>  
+    </div>
+</div>

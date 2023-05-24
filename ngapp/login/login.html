@@ -1,0 +1,180 @@
+<div class="cont">
+
+  <div class="form">
+    <form action="">
+      <h2>Sign In</h2><br /><br />
+      <div class="form-group">
+        <label for="mobilenumber">Username</label>
+      </div>
+      <div class="form-group">
+        <input class="form-control" placeholder="Username"
+          ng-model="mobilenumber_login" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" ng-model="password_login" />
+      </div>
+      <div class="checkbox text-center">
+        <input type="checkbox" class="checkbox-row" ng-model="checked" ng-click="selected()" name="terms"
+          value="terms"><a class="acceptance-link" ng-click="terms()" style="color:black;">Terms &amp; Condition</a>
+        <font color="black"> and </font><a class="acceptance-link" ng-click="privacy()" style="color:black;">Privacy
+          Policy</a>
+      </div>
+      <button class="login" ng-click="login()" ng-disabled="!checked">Sign In</button>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-center" ng-model="errorMessage"><span class="error-text txt1" ng-bind="errorMessage"
+              style="color:red;"></span></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .cont {
+    position: relative;
+    width: 25%;
+    height: 500px;
+    padding: 10px 25px;
+    margin: 10vh auto;
+    background:
+      linear-gradient(#fff,
+      #fff);
+    border-radius: 8px;
+  }
+
+  .form {
+    width: 100%;
+    height: 100%;
+  }
+
+  h1,
+  h2 {
+    text-align: center;
+    display: block;
+  }
+
+  .user,
+  .pass {
+    display: block;
+    padding-left: 15px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .user,
+  .pass,
+  .login {
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: lighter;
+    margin-bottom: 30px;
+
+  }
+
+  .user,
+  .pass {
+    background: rgba(255, 255, 255, .2);
+  }
+
+  .login {
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    background: #5f88c6;
+    font-size: 20px;
+    transition: background 0.4s ease;
+  }
+
+  .login:hover {
+    background: #01a2ff;
+  }
+
+  .login:disabled {
+    background: #a8a8a8;
+    pointer-events: none;
+  }
+
+  .login:active {
+    background: #a8a8a8;
+  }
+
+  @media only screen and (min-width : 280px) {
+    .cont {
+      width: 90%
+    }
+  }
+
+  @media only screen and (min-width : 480px) {
+    .cont {
+      width: 60%
+    }
+  }
+
+  @media only screen and (min-width : 768px) {
+    .cont {
+      width: 40%
+    }
+  }
+
+  @media only screen and (min-width : 992px) {
+    .cont {
+      width: 30%
+    }
+  }
+
+  input,
+  select,
+  textarea {
+    color: #000;
+  }
+
+  textarea:focus,
+  input:focus {
+    color: #000;
+  }
+
+  input::placeholder {
+    color: rgb(0, 0, 0);
+  }
+
+  /* Change the white to any color ;) */
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .acceptance-link:link {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .acceptance-link:hover {
+    color: #bf5900;
+  }
+
+  .acceptance-link:active {
+    color: #bf5900;
+  }
+</style>

@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 table_margin">
+    <div class="row">
+      <h3 class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-left">Employee Reports</h3>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right">
+        <button class="btn btn-primary" ng-click="scheduleEmployeeReport()">Schedule Employee Report</button>
+      </div>
+    </div>
+    <br /><br />
+    <div class="row">
+      <div class="col-md-7 col-lg-7 col-xl-7">
+        <label for="daterange" class="control-label">Search</label>
+        <input type="text" class="form-control" id="myInput" ng-keyup="filterReport()"
+          placeholder="Search" ng-model="search_text" />
+      </div>
+      <div class="col-md-5 col-lg-5 col-xl-5">
+        <label for="daterange" class="control-label">Filter by Date Range</label>
+        <input date-range-picker id="daterange" name="daterange" class="form-control date-picker" type="text"
+          ng-model="date" clearable="true" required />
+      </div>
+    </div>
+    <br /><br />
+    <table class="table" id="tableToExport">
+      <tr>
+        <th>Transaction Id
+        </th>
+        <th>Job Number
+          </th>
+          <th>Cost Center
+          </th>
+        <th ng-hide="isClient">Client Name
+        </th>
+        <th>Employee Id
+        </th>
+        <th>Employee Full Name
+        </th>
+        <th>Product Id
+        </th>
+        <th>Product Name
+        </th>
+        <th>Machine Name
+        </th>
+        <th>Timestamp
+        </th>
+      </tr>
+<!--      <tr ng-repeat="transaction in transactions | dateFilter:startDate:endDate"> --> 
+      <tr ng-repeat="transaction in transactions"> 
+        <td>{{transaction.transaction_id}}
+        </td>
+        <td>{{transaction.job_number}}
+          </td>
+          <td>{{transaction.cost_center}}
+          </td>
+        <td ng-hide="isClient">{{transaction.client_name}}
+        </td>
+        <td>{{transaction.employee_id}}
+        </td>
+        <td>{{transaction.employee_full_name}}
+        </td>
+        <td>{{transaction.product_id}}
+        </td>
+        <td>{{transaction.product_name}}
+        </td>
+        <td>{{transaction.machine_name}}
+        </td>
+        <td>{{transaction.timestamp}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="login" excel-export export-data="exportData" file-name="{{fileName}}">Download Excel</div>
+  </div>
+
+</div>
+<style>
+  .login {
+    color: #fff;
+    cursor: pointer;
+    background: #3598dc;
+    font-size: 14px;
+    transition: background 0.4s ease;
+    padding: 10px;
+  }
+
+  .login:hover {
+    background: #0470af;
+  }
+</style>

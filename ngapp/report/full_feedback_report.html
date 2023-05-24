@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 table_margin">
+    <div class="row">
+      <h3 class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-left">Feedback Reports</h3>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right">
+        <button class="btn btn-primary" ng-click="scheduleFeedbackReport()">Schedule Feedback Report</button>
+      </div>
+    </div>
+    <br /><br />
+    <div class="row">
+      <div class="col-md-7 col-lg-7 col-xl-7">
+        <label for="daterange" class="control-label">Search</label>
+        <input type="text" class="form-control" id="myInput" ng-keyup="filterReport()"
+          placeholder="Search" ng-model="search" />
+      </div>
+      <div class="col-md-5 col-lg-5 col-xl-5">
+        <label for="daterange" class="control-label">Filter by Date Range</label>
+        <input date-range-picker id="daterange" name="daterange" class="form-control date-picker" type="text"
+          ng-model="date" clearable="true" required />
+      </div>
+    </div>
+    <br /><br />
+    <table class="table" id="tableToExport">
+      <tr>
+        <th>Transaction Id
+        </th>
+        <th>Machine Name
+        </th>
+        <th>Product ID
+        </th>
+        <th>Product Name
+        </th>
+        <th>Customer Name
+        </th>
+        <th>Customer Phone
+        </th>
+        <th>Customer Email
+        </th>
+        <th>Complaint
+        </th>
+        <th>Feedback
+        </th>
+        <th>Timestamp
+        </th>
+      </tr>
+      <tr ng-repeat="report in feedbacks">
+  <!--    <tr ng-repeat="report in data_user | dateFilter:startDate:endDate"> -->
+
+        <td>{{report.transaction_id}}
+        </td>
+        <td>{{report.machine_name}}
+        </td>
+        <td>{{report.product_id}}
+        </td>
+        <td>{{report.product_name}}
+        </td>
+        <td>{{report.customer_name}}
+        </td>
+        <td>{{report.customer_phone}}
+        </td>
+        <td>{{report.customer_email}}
+        </td>
+        <td>{{report.complaint}}
+        </td>
+        <td>{{report.feedback}}
+        </td>
+        <td>{{report.timestamp}}
+        </td>
+      </tr>
+    </table>
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 text-center">
+      <div class="login" excel-export export-data="exportData" file-name="{{fileName}}">Download Excel</div>
+    </div>
+  </div>
+
+  <br /><br />
+</div>
+<style>
+  h4 {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    height: 25px;
+  }
+
+  .login {
+    color: #fff;
+    cursor: pointer;
+    background: #3598dc;
+    font-size: 14px;
+    transition: background 0.4s ease;
+    padding: 10px;
+  }
+
+  .login:hover {
+    background: #0470af;
+  }
+</style>
